@@ -74,25 +74,26 @@
         const popoverHTML = document.createElement('div');
         popoverHTML.classList.add('profile-widget');
         popoverHTML.innerHTML = `
-            <button class="profile-trigger" id="profileBtn">
-                <i class="fas fa-user"></i>
-            </button>
+    <button class="profile-trigger" id="profileBtn">
+        <i class="fas fa-user"></i>
+    </button>
 
-            <div class="profile-popover" id="profileMenu">
-                <div class="popover-header">
-                    <div class="avatar-circle"><i class="fas fa-user"></i></div>
-                    <div class="user-info">
-                        <h3 class="user-name">Student1</h3>
-                        <span class="user-badge">Student</span>
-                    </div>
-                    <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
-                </div>
-                <a href="#profile" class="profile-card-link">
-                    <i class="fa-solid fa-user card-icon"></i>
-                    <span class="card-title">My Profile</span>
-                    <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
-                </a>
+    <div class="profile-popover" id="profileMenu">
+        <div class="popover-header">
+            <div class="avatar-circle"><i class="fas fa-user"></i></div>
+            <div class="user-info">
+                <h3 class="user-name">Student1</h3>
+                <span class="user-badge">Student</span>
             </div>
+            <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
+        </div>
+        <a href="Profilepage.html" class="profile-card-link">
+            <i class="fa-solid fa-user card-icon"></i>
+            <span class="card-title">My Profile</span>
+            <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
+        </a>
+    </div>
+
         `;
         headerRight.appendChild(popoverHTML);
 
