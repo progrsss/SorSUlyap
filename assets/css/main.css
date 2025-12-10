@@ -1891,11 +1891,11 @@ h6 {
     }
 
     .faq-hero-wrapper {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: white;
       padding: 3rem;
       border-radius: 20px;
       color: white;
-      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -1920,12 +1920,14 @@ h6 {
       margin-bottom: 2rem;
       opacity: 0.95;
       line-height: 1.6;
+      color:#000
     }
 
     .faq-hero-buttons {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
+      color:#000;
     }
 
     .faq-hero-btn {
@@ -1943,8 +1945,8 @@ h6 {
     }
 
     .faq-hero-btn-primary {
-      background: white;
-      color: #667eea;
+      background: #D68B8B;
+      color: #000000;
     }
 
     .faq-hero-btn-primary:hover {
@@ -1953,21 +1955,23 @@ h6 {
     }
 
     .faq-hero-btn-secondary {
-      background: transparent;
-      color: white;
-      border: 2px solid white;
+      background: #D68B8B;
+      color: rgb(0, 0, 0);
+      border: 2px solid rgb(255, 255, 255);
     }
 
     .faq-hero-btn-secondary:hover {
       background: white;
       color: #667eea;
       transform: translateY(-3px);
+      box-shadow:  0 8px 20px rgba(189, 33, 33, 0.2);
     }
 
     .faq-hero-icon {
       font-size: 5rem;
       opacity: 0.9;
       text-align: center;
+      color: #D68B8B;
     }
 
     /* FAQ Main Section */
@@ -1983,8 +1987,8 @@ h6 {
     }
 
     .faq-card-header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
+      background:  #D68B8B;
+      color: rgb(0, 0, 0);
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -2085,7 +2089,7 @@ h6 {
     }
 
     .faq-accordion-button.active {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #D68B8B;
       color: white;
     }
 
@@ -2155,7 +2159,7 @@ h6 {
     }
 
     .feedback-user-header {
-      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      background: #D68B8B;
       color: #333;
     }
 
@@ -2219,7 +2223,7 @@ h6 {
     }
 
     .feedback-submit-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #D68B8B;
       color: white;
       border: none;
       padding: 0.875rem 2rem;
@@ -2375,3 +2379,256 @@ h6 {
 
 
  
+
+  /*-----------------classSchedule Page Styles------------------*/
+
+  
+        /* Header for Grid View */
+        .header-badge {
+            background: white;
+            max-width: 360px;
+            margin: 0 auto 40px;
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-badge .icon {
+            font-size: 24px;
+        }
+
+        .header-badge h1 {
+            font-size: 20px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* Grid View Container */
+        .grid-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .schedule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .schedule-image-wrapper {
+            width: 100%;
+            cursor: pointer;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .schedule-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0);
+            transition: background 0.3s ease;
+        }
+
+        .schedule-image-wrapper:hover::after {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .schedule-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 3px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .schedule-info {
+            margin-bottom: 12px;
+        }
+
+        .schedule-title {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .schedule-subtitle {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view {
+            background: #6c757d;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-view:hover {
+            background: #5a6268;
+        }
+
+        .btn-download {
+            background: #dc3545;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-download:hover {
+            background: #c82333;
+        }
+
+        /* Detail View */
+        .detail-container {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .detail-container.active {
+            display: block;
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .detail-header .icon {
+            font-size: 40px;
+            background: white;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .detail-header-text h1 {
+            font-size: 28px;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .detail-header-text .subtitle {
+            color: rgba(255,255,255,0.9);
+            font-size: 15px;
+        }
+
+        .back-button {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            border: 2px solid white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .detail-content {
+            background: white;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .detail-image-wrapper {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .detail-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            border: 4px solid #ddd;
+        }
+
+        .download-section {
+            text-align: center;
+        }
+
+        .download-button {
+            background: #8b4550;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: #723a44;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        @media (max-width: 768px) {
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
