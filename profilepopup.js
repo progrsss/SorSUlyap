@@ -53,7 +53,7 @@
         .popover-header { display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; }
         .user-info { margin-left: 12px; }
         .user-name { font-weight: 700; font-size: 16px; color: #333; margin: 0; }
-        .user-badge { display: inline-block; background-color: #eee; color: #555; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-top: 4px; }
+        .user-badge { display: inline-block; background-color: #e58a8aff; color: #eee; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-top: 4px; }
         .close-btn { position: absolute; top: 0; right: 0; cursor: pointer; font-size: 14px; color: #555; }
         .close-btn:hover { color: #d32f2f; }
 

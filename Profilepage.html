@@ -196,6 +196,69 @@
                 display: none;
             }
         }
+
+        /* --- Logout Popup --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+            animation: pop 0.25s ease;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .popup-text {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cancel-btn, .yes-btn {
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .cancel-btn {
+            background: #bdbdbd;
+        }
+
+        .yes-btn {
+            background: #d32f2f;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -223,7 +286,7 @@
 
         <!-- Buttons -->
         <button class="change-profile-btn" id="changeProfileBtn">Change Profile</button>
-        <a href="login.html" class="logout-btn">Log Out</a>
+        <button class="logout-btn" id="logoutBtn">Log Out</button>
 
         <!-- Personal Information Section -->
         <div class="details-section">
@@ -246,19 +309,45 @@
                 <div class="row-separator"></div>
             </div>
         </div>
+    </div>
 
+    <!-- LOGOUT POPUP -->
+    <div class="popup-overlay" id="logoutPopup">
+        <div class="popup-box">
+            <div class="popup-title">Log Out?</div>
+            <div class="popup-text">Are you sure you want to log out?</div>
+
+            <div class="popup-buttons">
+                <button class="cancel-btn" id="cancelLogout">Cancel</button>
+                <button class="yes-btn" id="confirmLogout">Yes</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Back button navigates to index.html
+        // Back button
         document.getElementById('backBtn').addEventListener('click', () => {
             window.location.href = 'index.html';
         });
 
-        // Change Profile button click (example)
+        // Change profile
         document.getElementById('changeProfileBtn').addEventListener('click', () => {
             alert('Redirecting to change profile page...');
-            // window.location.href = 'change-profile.html'; // Uncomment if you have a change profile page
+        });
+
+        // Logout popup open
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            document.getElementById("logoutPopup").style.display = "flex";
+        });
+
+        // Cancel logout
+        document.getElementById("cancelLogout").addEventListener("click", function () {
+            document.getElementById("logoutPopup").style.display = "none";
+        });
+
+        // Confirm logout
+        document.getElementById("confirmLogout").addEventListener("click", function () {
+            window.location.href = "login.html";
         });
     </script>
 

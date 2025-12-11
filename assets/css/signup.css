@@ -59,20 +59,20 @@ body {
 }
 
 .logo-circle img {
-    width: 100%;
-    height: 100%;
+    width: 300;
+    height: 300px;
     object-fit: contain;
 }
 
 .brand-title {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: 700;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .brand-tagline {
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 400;
     text-align: center;
     opacity: 0.95;

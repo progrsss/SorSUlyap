@@ -919,20 +919,21 @@ h6 {
 }
 
 .logo-circle img {
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
 }
 
 .brand-title {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   margin-bottom: 10px;
   text-align: center;
+  color:white ;
 }
 
 .brand-tagline {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 400;
   text-align: center;
   opacity: 0.95;
@@ -989,6 +990,7 @@ h6 {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s;
+  text-align: center;
 }
 
 .form-input:focus {

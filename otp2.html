@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Code</title>
+    <link rel="stylesheet" href="assets/css/otp2.css">
+    </head>
+<body>
+    <div class="background-gradient"></div>
+    <div class="otp-container">
+        <div class="otp-card">
+            <div class="header">
+                <div class="icon-circle">
+                    <span class="lock-icon">🔒</span>
+                </div>
+                <h3>Verification Code</h3>
+                <p>Enter the 6-digit code sent to your email</p>
+            </div>
+
+            <form id="otp-form" class="otp-form">
+                <div class="code-inputs">
+                    <input type="text" maxlength="1" id="input-1" class="otp-input" inputmode="numeric">
+                    <input type="text" maxlength="1" id="input-2" class="otp-input" inputmode="numeric">
+                    <input type="text" maxlength="1" id="input-3" class="otp-input" inputmode="numeric">
+                    <input type="text" maxlength="1" id="input-4" class="otp-input" inputmode="numeric">
+                    <input type="text" maxlength="1" id="input-5" class="otp-input" inputmode="numeric">
+                    <input type="text" maxlength="1" id="input-6" class="otp-input" inputmode="numeric">
+                </div>
+
+                <div class="resend-section">
+                    <p>Didn't received OTP? <a href="#" class="resend-link">Resend</a></p>
+                </div>
+                <form id="otp-form" class="otp-form">
+    <!-- your OTP inputs here -->
+    <button type="submit" class="verify-button">Verify</button>
+</form>
+
+<script>
+document.getElementById('otp-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default form submission
+    // You can add OTP validation here if needed
+    window.location.href = 'reset_password.html'; // redirect to reset password page
+});
+</script>
+
+            <div class="security-tip-box">
+                <div class="notification-icon">ⓘ</div>
+                <div class="notification-content">
+                    <h4>Security tip</h4>
+                    <p>Never share your OTP code with anyone. This code will expire in 10 minutes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const inputs = document.querySelectorAll('.otp-input');
+
+            inputs.forEach((input, index) => {
+                input.addEventListener('input', (e) => {
+                    // Automatically move focus to the next input field
+                    if (e.data && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    // Handle backspace: move focus to the previous input field
+                    if (e.key === 'Backspace' && input.value === '' && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
