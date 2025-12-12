@@ -22,6 +22,246 @@
   document.addEventListener('scroll', toggleScrolled);
   window.addEventListener('load', toggleScrolled);
 
+  // Notification functionality for header bell
+  const notificationBell = document.querySelector('.notification-bell');
+  const notificationDropdown = document.getElementById('notification-dropdown');
+  const notificationBadge = document.getElementById('notification-badge');
+  const notificationList = document.getElementById('notification-list');
+  const closeNotification = document.getElementById('close-notification');
+  const markAllRead = document.getElementById('mark-all-read');
+
+  if (notificationBell && notificationDropdown) {
+    // LocalStorage key
+    const LS_KEYS = {
+      notifs: 'cs_notifs'
+    };
+
+    // Seed data if empty
+    function seedIfEmpty() {
+      if (!localStorage.getItem(LS_KEYS.notifs)) {
+        const now = Date.now();
+        const seedNotifs = [
+          {
+            id: cryptoRandom(),
+            title: 'Welcome to SorSUlyap',
+            message: 'Stay updated with your schedules and announcements.',
+            timestamp: now - 86400000,
+            read: false,
+            sender: 'Admin'
+          },
+          {
+            id: cryptoRandom(),
+            title: 'System Maintenance',
+            message: 'Scheduled maintenance this weekend from 2 AM to 4 AM.',
+            timestamp: now - 3600000,
+            read: false,
+            sender: 'Admin'
+          },
+          {
+            id: cryptoRandom(),
+            title: 'New Course Available',
+            message: 'Introduction to Computer Science is now open for enrollment.',
+            timestamp: now - 7200000,
+            read: false,
+            sender: 'Admin'
+          }
+        ];
+        localStorage.setItem(LS_KEYS.notifs, JSON.stringify(seedNotifs));
+      }
+    }
+
+    function cryptoRandom() {
+      try { return crypto.getRandomValues(new Uint32Array(1))[0].toString(16) + Date.now().toString(16); }
+      catch { return Math.random().toString(16).slice(2) + Date.now().toString(16); }
+    }
+
+    // Helpers to load/save
+    const load = (k) => JSON.parse(localStorage.getItem(k) || '[]');
+    const save = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+
+    // Format timestamp
+    function formatTimestamp(ts) {
+      const now = Date.now();
+      const diff = now - ts;
+      const minutes = Math.floor(diff / (1000 * 60));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      if (minutes < 1) return 'Just now';
+      if (minutes < 60) return `${minutes}m ago`;
+      if (hours < 24) return `${hours}h ago`;
+      if (days < 7) return `${days}d ago`;
+
+      // For older dates, show actual date
+      const date = new Date(ts);
+      return date.toLocaleDateString();
+    }
+
+            // Escape HTML
+            function escapeHtml(s) { return (s||'').replace(/[&<>]/g, c=>({"&":"&","<":"<",">":">"}[c])); }
+
+            // Expose addTestNotification function globally
+            window.addTestNotification = function() {
+                const notifs = load(LS_KEYS.notifs);
+                notifs.unshift({
+                    id: cryptoRandom(),
+                    title: 'Test Notification ' + (notifs.length + 1),
+                    message: 'This is a test notification to demonstrate the functionality.',
+                    timestamp: Date.now(),
+                    read: false,
+                    sender: 'System Test'
+                });
+                save(LS_KEYS.notifs, notifs);
+                renderNotifications();
+            };
+
+    // Calculate unread count
+    function getUnreadCount(notifs) {
+      return notifs.filter(n => !n.read).length;
+    }
+
+    // Render notifications
+    function renderNotifications() {
+      const notifs = load(LS_KEYS.notifs);
+      const unreadCount = getUnreadCount(notifs);
+
+      // Update badge
+      if (unreadCount > 0) {
+        notificationBadge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+        notificationBadge.style.display = 'flex';
+      } else {
+        notificationBadge.style.display = 'none';
+      }
+
+      // Render notification list
+      if (notificationList) {
+        if (notifs.length === 0) {
+          notificationList.innerHTML = `
+            <div class="notification-empty">
+              <i class="fas fa-bell-slash"></i>
+              <p>No notifications yet</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Sort by timestamp (newest first) and limit to recent
+        const recentNotifs = notifs
+          .sort((a, b) => b.timestamp - a.timestamp)
+          .slice(0, 10);
+
+        notificationList.innerHTML = recentNotifs.map(n => `
+          <div class="notification-card ${n.read ? '' : 'unread'}" data-id="${n.id}">
+            <div class="notification-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="notification-content">
+              <div class="notification-sender">${escapeHtml(n.sender)}</div>
+              <div class="notification-title">${escapeHtml(n.title)}</div>
+              <div class="notification-message">${escapeHtml(n.message)}</div>
+              <div class="notification-timestamp">${formatTimestamp(n.timestamp)}</div>
+            </div>
+            <button class="dismiss-btn" data-action="dismiss" data-id="${n.id}">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    // Toggle notification dropdown
+    function toggleNotificationDropdown() {
+      const isVisible = notificationDropdown.style.display === 'block';
+      if (isVisible) {
+        notificationDropdown.style.display = 'none';
+      } else {
+        renderNotifications();
+        notificationDropdown.style.display = 'block';
+        setTimeout(() => notificationDropdown.style.opacity = '1', 10);
+      }
+    }
+
+    // Close notification dropdown
+    function closeNotificationDropdown() {
+      notificationDropdown.style.display = 'none';
+      notificationDropdown.style.opacity = '0';
+    }
+
+    // Mark notification as read
+    function markAsRead(notificationId) {
+      const notifs = load(LS_KEYS.notifs);
+      const notif = notifs.find(n => n.id === notificationId);
+      if (notif && !notif.read) {
+        notif.read = true;
+        save(LS_KEYS.notifs, notifs);
+        renderNotifications();
+      }
+    }
+
+    // Dismiss notification
+    function dismissNotification(notificationId) {
+      const notifs = load(LS_KEYS.notifs);
+      const updatedNotifs = notifs.filter(n => n.id !== notificationId);
+      save(LS_KEYS.notifs, updatedNotifs);
+      renderNotifications();
+    }
+
+    // Mark all notifications as read
+    function markAllAsRead() {
+      const notifs = load(LS_KEYS.notifs);
+      notifs.forEach(n => n.read = true);
+      save(LS_KEYS.notifs, notifs);
+      renderNotifications();
+    }
+
+    // Event listeners
+    notificationBell.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleNotificationDropdown();
+    });
+
+    if (closeNotification) {
+      closeNotification.addEventListener('click', closeNotificationDropdown);
+    }
+
+    if (markAllRead) {
+      markAllRead.addEventListener('click', markAllAsRead);
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!notificationBell.contains(e.target) && !notificationDropdown.contains(e.target)) {
+        closeNotificationDropdown();
+      }
+    });
+
+    // Handle notification card interactions
+    notificationList?.addEventListener('click', (e) => {
+      const card = e.target.closest('.notification-card');
+      const dismissBtn = e.target.closest('.dismiss-btn');
+
+      if (dismissBtn) {
+        // Handle dismiss action
+        e.stopPropagation();
+        const notificationId = dismissBtn.getAttribute('data-id');
+        dismissNotification(notificationId);
+      } else if (card) {
+        // Handle card click (mark as read)
+        const notificationId = card.getAttribute('data-id');
+        markAsRead(notificationId);
+      }
+    });
+
+    // Prevent propagation on dropdown clicks
+    notificationDropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Initialize
+    seedIfEmpty();
+    renderNotifications();
+  }
+
   /**
    * Mobile nav toggle
    */
