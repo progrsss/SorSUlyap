@@ -48,6 +48,8 @@ document.querySelector('form').addEventListener('submit', async function(e) {
     yearLevel: formData.get('yearLevel') || null
   };
 
+  console.log('User data to send:', userData);
+
   try {
     const response = await api.register(userData);
     if (response.success) {
@@ -58,6 +60,6 @@ document.querySelector('form').addEventListener('submit', async function(e) {
     }
   } catch (error) {
     console.error('Registration error:', error);
-    alert('Registration failed. Please try again.');
+    alert(`Registration failed: ${error.message}`);
   }
 });

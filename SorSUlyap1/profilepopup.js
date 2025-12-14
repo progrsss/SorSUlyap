@@ -70,6 +70,12 @@
         const oldProfileBtn = headerRight.querySelector('.icon-button:last-child');
         if (oldProfileBtn) oldProfileBtn.remove();
 
+        // Get current user
+        const user = JSON.parse(localStorage.getItem(CONFIG.USER_KEY) || '{}');
+        const userName = user.name || 'User';
+        const userRole = user.role || 'Student';
+        const profileHref = userRole === 'Faculty' ? 'faculty.html' : 'Profilepage.html';
+
         // 3️⃣ Inject new profile widget button with popover
         const popoverHTML = document.createElement('div');
         popoverHTML.classList.add('profile-widget');
@@ -82,12 +88,12 @@
         <div class="popover-header">
             <div class="avatar-circle"><i class="fas fa-user"></i></div>
             <div class="user-info">
-                <h3 class="user-name">Student1</h3>
-                <span class="user-badge">Student</span>
+                <h3 class="user-name">${userName}</h3>
+                <span class="user-badge">${userRole}</span>
             </div>
             <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
         </div>
-        <a href="Profilepage.html" class="profile-card-link">
+        <a href="${profileHref}" class="profile-card-link">
             <i class="fa-solid fa-user card-icon"></i>
             <span class="card-title">My Profile</span>
             <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
