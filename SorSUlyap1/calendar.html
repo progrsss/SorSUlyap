@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Calendar of Activities</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  
+  <!--Header Icons-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  
+</head>
+
+<body class="about-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="logo">SorSUlyap</div>
+        <nav class="nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="calendar.html">Calendar of Activities</a>
+          <a href="classSched.html">Class Schedules</a>
+          <a href="offline.html">Offline Mode</a>
+          <a href="customer.html">Customer Service</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-bell"></i>
+            </button>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+
+  <main id="main">
+    
+    
+
+    <div class="title">
+        <span><strong>Calendar of Activities</strong></span>
+    </div>
+
+    <div class="container">
+        <div class="calendar-section">
+            <div class="calendar-header">
+                <button id="prevMonth" class="nav-button"><</button>
+                <span class="month-selector" id="monthSelector"></span>
+                <button id="nextMonth" class="nav-button">></button>
+                <span class="year-selector" id="yearSelector"></span>
+            </div>
+
+            <div class="calendar">
+                <div class="weekdays">
+                    <div class="weekday">Mon</div>
+                    <div class="weekday">Tue</div>
+                    <div class="weekday">Wed</div>
+                    <div class="weekday">Thu</div>
+                    <div class="weekday">Fri</div>
+                    <div class="weekday">Sat</div>
+                    <div class="weekday">Sun</div>
+                </div>
+                <div class="dates" id="dates"></div>
+            </div>
+        </div>
+
+        <div class="events-section">
+            <div class="events-title">Events</div>
+            <div id="eventsContainer">
+                <div class="event">
+                    <div class="event-title">Comsoc meeting</div>
+                    <div class="event-time">⏰ 8:30 AM</div>
+                    <div class="event-location">📍 Social Hall</div>
+                    <div class="event-time">January 1,2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Month Overlay -->
+    <div class="overlay" id="monthOverlay">
+        <div class="overlay-content">
+            <span class="close-overlay" onclick="closeMonthOverlay()">×</span>
+            <div class="overlay-title">Select Month</div>
+            <div class="overlay-grid" id="monthGrid"></div>
+        </div>
+    </div>
+
+    <!-- Year Overlay -->
+    <div class="overlay" id="yearOverlay">
+        <div class="overlay-content">
+            <span class="close-overlay" onclick="closeYearOverlay()">×</span>
+            <div class="overlay-title">Select Year</div>
+            <div class="overlay-grid" id="yearGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+        
+        let currentMonth = 10; // November (0-indexed)
+        let currentYear = 2025;
+        let selectedDate = null;
+        const today = new Date();
+
+        // Sample events data - you can add more events here
+        const events = [
+            {
+                date: 1,
+                month: 0, // January
+                year: 2025,
+                title: "Comsoc meeting",
+                time: "8:30 AM",
+                location: "Social Hall"
+            },
+            {
+                date: 12,
+                month: 11, // December
+                year: 2025,
+                title: "Year -End Party",
+                time: "5:00 PM",
+                location: "SorSU Track and Field"
+            },
+            {
+                date: 3,
+                month: 0, // January
+                year: 2026,
+                title: "General Assembly",
+                time: "1:00 PM",
+                location: "Social Hall"
+            }
+        ];
+
+        function getEventsForDate(date, month, year) {
+            return events.filter(event => 
+                event.date === date && 
+                event.month === month && 
+                event.year === year
+            );
+        }
+
+        function displayEvents(date, month, year) {
+            const eventsContainer = document.getElementById('eventsContainer');
+            const dateEvents = getEventsForDate(date, month, year);
+
+            if (dateEvents.length === 0) {
+                eventsContainer.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">No events for this date</div>';
+                return;
+            }
+
+            eventsContainer.innerHTML = '';
+            dateEvents.forEach(event => {
+                const eventEl = document.createElement('div');
+                eventEl.className = 'event';
+                eventEl.innerHTML = `
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-time">⏰ ${event.time}</div>
+                    <div class="event-location">📍 ${event.location}</div>
+                    <div class="event-time">${months[event.month]} ${event.date}, ${event.year}</div>
+                `;
+                eventsContainer.appendChild(eventEl);
+            });
+        }
+
+        function renderCalendar() {
+            const monthSelector = document.getElementById('monthSelector');
+            const yearSelector = document.getElementById('yearSelector');
+            const datesContainer = document.getElementById('dates');
+
+            monthSelector.textContent = months[currentMonth];
+            yearSelector.textContent = currentYear;
+
+            datesContainer.innerHTML = '';
+
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            const prevLastDay = new Date(currentYear, currentMonth, 0);
+            
+            const firstDayIndex = (firstDay.getDay() + 6) % 7;
+            const lastDate = lastDay.getDate();
+            const prevLastDate = prevLastDay.getDate();
+
+            // Previous month dates
+            for (let i = firstDayIndex - 1; i >= 0; i--) {
+                const dateEl = document.createElement('div');
+                dateEl.className = 'date other-month';
+                dateEl.textContent = prevLastDate - i;
+                datesContainer.appendChild(dateEl);
+            }
+
+            // Current month dates
+            for (let i = 1; i <= lastDate; i++) {
+                const dateEl = document.createElement('div');
+                dateEl.className = 'date';
+                dateEl.textContent = i;
+                
+                const isToday = i === today.getDate() && 
+                    currentMonth === today.getMonth() && 
+                    currentYear === today.getFullYear();
+                
+                const isSelected = selectedDate === i && 
+                    currentMonth === selectedDate.month && 
+                    currentYear === selectedDate.year;
+
+                if (isToday) {
+                    dateEl.classList.add('current');
+                } else if (isSelected) {
+                    dateEl.classList.add('selected');
+                }
+
+                dateEl.onclick = () => handleDateClick(i);
+                datesContainer.appendChild(dateEl);
+            }
+
+            // Next month dates
+            const remainingCells = 35 - datesContainer.children.length;
+            for (let i = 1; i <= remainingCells; i++) {
+                const dateEl = document.createElement('div');
+                dateEl.className = 'date other-month';
+                dateEl.textContent = i;
+                datesContainer.appendChild(dateEl);
+            }
+        }
+
+        function handleDateClick(date) {
+            selectedDate = {
+                date: date,
+                month: currentMonth,
+                year: currentYear
+            };
+            renderCalendar();
+            displayEvents(date, currentMonth, currentYear);
+        }
+
+        function showMonthOverlay() {
+            const overlay = document.getElementById('monthOverlay');
+            const grid = document.getElementById('monthGrid');
+            grid.innerHTML = '';
+
+            months.forEach((month, index) => {
+                const item = document.createElement('div');
+                item.className = 'overlay-item';
+                item.textContent = month;
+                item.onclick = () => selectMonth(index);
+                grid.appendChild(item);
+            });
+
+            overlay.classList.add('active');
+        }
+
+        function closeMonthOverlay() {
+            document.getElementById('monthOverlay').classList.remove('active');
+        }
+
+        function selectMonth(index) {
+            currentMonth = index;
+            selectedDate = null; // Clear selection when changing month
+            renderCalendar();
+            // Clear events display
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+            closeMonthOverlay();
+        }
+
+        function showYearOverlay() {
+            const overlay = document.getElementById('yearOverlay');
+            const grid = document.getElementById('yearGrid');
+            grid.innerHTML = '';
+
+            for (let year = 2025; year <= 2030; year++) {
+                const item = document.createElement('div');
+                item.className = 'overlay-item';
+                item.textContent = year;
+                item.onclick = () => selectYear(year);
+                grid.appendChild(item);
+            }
+
+            overlay.classList.add('active');
+        }
+
+        function closeYearOverlay() {
+            document.getElementById('yearOverlay').classList.remove('active');
+        }
+
+        function selectYear(year) {
+            currentYear = year;
+            selectedDate = null; // Clear selection when changing year
+            renderCalendar();
+            // Clear events display
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+            closeYearOverlay();
+        }
+
+        function prevMonth() {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            selectedDate = null;
+            renderCalendar();
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+        }
+
+        function nextMonth() {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            selectedDate = null;
+            renderCalendar();
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+        }
+
+        document.getElementById('monthSelector').onclick = showMonthOverlay;
+        document.getElementById('yearSelector').onclick = showYearOverlay;
+        document.getElementById('prevMonth').onclick = prevMonth;
+        document.getElementById('nextMonth').onclick = nextMonth;
+
+        // Close overlays when clicking outside
+        document.getElementById('monthOverlay').onclick = function(e) {
+            if (e.target === this) closeMonthOverlay();
+        };
+
+        document.getElementById('yearOverlay').onclick = function(e) {
+            if (e.target === this) closeYearOverlay();
+        };
+
+        renderCalendar();
+        
+        // Show initial message
+        document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+    </script>
+  </main> <!-- End #main -->
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="profilepopup.js"></script>
+
+</body>
+
+</html>

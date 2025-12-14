@@ -1,0 +1,129 @@
+<!-- Notification System -->
+    <section id="notification-center" class="section">
+      <div class="container">
+        <div class="card">
+          <div class="card-header d-flex flex-wrap gap-2 align-items-center justify-content-between">
+            <span>Notifications</span>
+            <div class="d-flex gap-2 flex-wrap">
+              <select id="notif-filter" class="form-select">
+                <option value="all">All</option>
+                <option value="unread">Unread</option>
+                <option value="read">Read</option>
+              </select>
+              <button id="notif-mark-all" class="btn btn-outline-secondary">Mark all as read</button>
+            </div>
+          </div>
+          <div class="list-group list-group-flush" id="notif-list"></div>
+        </div>
+
+        <!-- Admin: Create / Schedule Notification -->
+        <div id="notif-admin-card" class="card mt-4">
+          <div class="card-header">Admin - Create Notification</div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label class="form-label">Title</label>
+                <input id="notif-title" class="form-control" placeholder="e.g. System Maintenance">
+              </div>
+              <div class="col-12 col-md-6">
+                <label class="form-label">Schedule</label>
+                <input id="notif-schedule" type="datetime-local" class="form-control">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Message</label>
+                <textarea id="notif-message" class="form-control" rows="3" placeholder="Notification details"></textarea>
+              </div>
+              <div class="col-12 d-flex gap-2">
+                <button id="notif-send-now" class="btn btn-primary"><i class="bi bi-send me-1"></i>Send Now</button>
+                <button id="notif-schedule-btn" class="btn btn-outline-primary"><i class="bi bi-clock me-1"></i>Schedule</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+<!-- Admin: Manage FAQs -->
+        <div id="faq-admin-card" class="card mt-4 faq-admin">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Admin - Manage FAQs</span>
+            <button id="faq-add-btn" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg me-1"></i>Add FAQ</button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive max-h-300 table-fixed-head">
+              <table class="table align-middle mb-0">
+                <thead>
+                  <tr>
+                    <th style="width: 12rem">Category</th>
+                    <th>Question</th>
+                    <th style="width: 40%">Answer</th>
+                    <th class="text-end" style="width: 8rem">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="faq-admin-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+       <!-- Admin Feedback Card -->
+        <div class="feedback-card">
+          <div class="feedback-card-header feedback-admin-header">
+            <span>Admin - Feedback Overview</span>
+            <span class="feedback-rating-badge">
+              <span id="avg-rating">4.5</span> avg
+            </span>
+          </div>
+          <div class="feedback-card-body">
+            <div id="feedback-list" class="feedback-list">
+
+
+
+            <!-- Sample Feedback Items -->
+              <div class="feedback-list-item">
+                <div class="feedback-item-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="feedback-item-comment">
+                  Great platform! Very easy to use and helps me stay organized with all my activities.
+                </div>
+                <div class="feedback-item-date">December 8, 2025</div>
+              </div>
+
+              <div class="feedback-list-item">
+                <div class="feedback-item-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <div class="feedback-item-comment">
+                  The calendar feature is really helpful. Would love to see more customization options.
+                </div>
+                <div class="feedback-item-date">December 7, 2025</div>
+              </div>
+
+              <div class="feedback-list-item">
+                <div class="feedback-item-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="feedback-item-comment">
+                  Love the notifications system! Never miss important updates anymore.
+                </div>
+                <div class="feedback-item-date">December 6, 2025</div>
+              </div>
+
+

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Customer Service</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  
+  <!--Header Icons-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+  
+
+  
+</head>
+
+<body class="pricing-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="logo">SorSUlyap</div>
+        <nav class="nav">
+          <a href="index.html" class="active">Home</a>
+          <a href="calendar.html">Calendar of Activities</a>
+          <a href="classSched.html">Class Schedules</a>
+          <a href="offline.html">Offline Mode</a>
+          <a href="customer.html">Customer Service</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-bell"></i>
+            </button>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+
+
+  <main class="main">
+       
+    <div class="customer-container">
+
+    <!-- FAQ Hero Section -->
+    <section class="faq-hero-section">
+      <div class="faq-hero-wrapper">
+        <div class="faq-hero-content">
+          <h2 class="faq-hero-title">How can we help?</h2>
+          <p class="faq-hero-description">Search the FAQs, check notifications, or leave feedback. Admin tools are included below.</p>
+          <div class="faq-hero-buttons">
+            <a href="#faq" class="faq-hero-btn faq-hero-btn-primary">
+              <i class="bi bi-question-circle"></i> FAQs
+            </a>
+            <a href="#notification-center" class="faq-hero-btn faq-hero-btn-secondary">
+              <i class="bi bi-bell"></i> Notifications
+            </a>
+          </div>
+        </div>
+        <div class="faq-hero-icon">
+          <i class="bi bi-life-preserver"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Main Section -->
+    <section id="faq" class="faq-main-section">
+      <div class="faq-card">
+        <div class="faq-card-header">
+          <span class="faq-card-title">Frequently Asked Questions</span>
+          <div class="faq-controls">
+            <div class="faq-search-wrapper">
+              <span class="faq-search-icon"><i class="bi bi-search"></i></span>
+              <input id="faq-search" type="text" class="faq-search-input" placeholder="Search questions or answers...">
+            </div>
+            <select id="faq-category-filter" class="faq-category-select">
+              <option value="all">All Categories</option>
+              <option value="general">General</option>
+              <option value="account">Account</option>
+              <option value="technical">Technical</option>
+              <option value="billing">Billing</option>
+            </select>
+          </div>
+        </div>
+        <div class="faq-card-body">
+          <div class="faq-accordion" id="faq-accordion">
+
+            <!-- Sample FAQ Items -->
+            <div class="faq-accordion-item" data-category="general">
+              <button class="faq-accordion-button">
+                <div>
+                  <span class="faq-category-badge">General</span>
+                  <div>What is this platform about?</div>
+                </div>
+                <i class="bi bi-chevron-down faq-accordion-icon"></i>
+              </button>
+              <div class="faq-accordion-content">
+                <div class="faq-accordion-body">
+                  This platform is designed to help you manage your activities, schedules, and stay connected with important updates. It provides a comprehensive solution for organizing your academic and professional life.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item" data-category="account">
+              <button class="faq-accordion-button">
+                <div>
+                  <span class="faq-category-badge">Account</span>
+                  <div>How do I reset my password?</div>
+                </div>
+                <i class="bi bi-chevron-down faq-accordion-icon"></i>
+              </button>
+              <div class="faq-accordion-content">
+                <div class="faq-accordion-body">
+                  To reset your password, click on the "Forgot Password" link on the login page. Enter your email address, and we'll send you instructions to create a new password. Make sure to check your spam folder if you don't see the email.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item" data-category="technical">
+              <button class="faq-accordion-button">
+                <div>
+                  <span class="faq-category-badge">Technical</span>
+                  <div>What browsers are supported?</div>
+                </div>
+                <i class="bi bi-chevron-down faq-accordion-icon"></i>
+              </button>
+              <div class="faq-accordion-content">
+                <div class="faq-accordion-body">
+                  Our platform supports the latest versions of Chrome, Firefox, Safari, and Edge. For the best experience, we recommend keeping your browser updated to the latest version. Mobile browsers are also fully supported.
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-accordion-item" data-category="billing">
+              <button class="faq-accordion-button">
+                <div>
+                  <span class="faq-category-badge">Billing</span>
+                  <div>How do I update my payment information?</div>
+                </div>
+                <i class="bi bi-chevron-down faq-accordion-icon"></i>
+              </button>
+              <div class="faq-accordion-content">
+                <div class="faq-accordion-body">
+                  You can update your payment information in the Account Settings section. Navigate to Billing & Payments, then click "Update Payment Method". All payment information is securely encrypted and processed through our payment provider.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback-section">
+      <div class="feedback-grid">
+        <!-- User Feedback Card -->
+        <div class="feedback-card">
+          <div class="feedback-card-header feedback-user-header">
+            Leave Feedback
+          </div>
+          <div class="feedback-card-body">
+            <div class="feedback-form-group">
+              <label class="feedback-label">Your Rating</label>
+              <div id="rating-stars" class="feedback-rating-stars">
+                <i data-value="1" class="bi bi-star-fill feedback-star inactive"></i>
+                <i data-value="2" class="bi bi-star-fill feedback-star inactive"></i>
+                <i data-value="3" class="bi bi-star-fill feedback-star inactive"></i>
+                <i data-value="4" class="bi bi-star-fill feedback-star inactive"></i>
+                <i data-value="5" class="bi bi-star-fill feedback-star inactive"></i>
+              </div>
+            </div>
+            <div class="feedback-form-group">
+              <label class="feedback-label">Comments</label>
+              <textarea id="feedback-comment" class="feedback-textarea" rows="4" placeholder="Tell us about your experience"></textarea>
+            </div>
+            <button id="feedback-submit" class="feedback-submit-btn">
+              <i class="bi bi-check2-circle"></i> Submit Feedback
+            </button>
+            <div id="feedback-confirm" class="feedback-success-message">
+              <i class="bi bi-check-circle"></i> Thank you! Your feedback was submitted.
+            </div>
+          </div>
+        </div>
+
+       
+              
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // FAQ Accordion functionality
+    const accordionButtons = document.querySelectorAll('.faq-accordion-button');
+    accordionButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.nextElementSibling;
+        const isActive = button.classList.contains('active');
+        
+        // Close all accordions
+        accordionButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.nextElementSibling.classList.remove('active');
+        });
+        
+        // Open clicked accordion if it wasn't active
+        if (!isActive) {
+          button.classList.add('active');
+          content.classList.add('active');
+        }
+      });
+    });
+
+    // FAQ Search functionality
+    const searchInput = document.getElementById('faq-search');
+    const categoryFilter = document.getElementById('faq-category-filter');
+    const faqItems = document.querySelectorAll('.faq-accordion-item');
+
+    function filterFAQs() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const category = categoryFilter.value;
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-accordion-button').textContent.toLowerCase();
+        const answer = item.querySelector('.faq-accordion-body').textContent.toLowerCase();
+        const itemCategory = item.dataset.category;
+
+        const matchesSearch = question.includes(searchTerm) || answer.includes(searchTerm);
+        const matchesCategory = category === 'all' || itemCategory === category;
+
+        item.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterFAQs);
+    categoryFilter.addEventListener('change', filterFAQs);
+
+    // Star Rating functionality
+    const stars = document.querySelectorAll('.feedback-star');
+    let selectedRating = 0;
+
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.dataset.value);
+        updateStars();
+      });
+
+      star.addEventListener('mouseenter', () => {
+        const value = parseInt(star.dataset.value);
+        stars.forEach((s, index) => {
+          s.classList.toggle('active', index < value);
+          s.classList.toggle('inactive', index >= value);
+        });
+      });
+    });
+
+    document.getElementById('rating-stars').addEventListener('mouseleave', updateStars);
+
+    function updateStars() {
+      stars.forEach((s, index) => {
+        s.classList.toggle('active', index < selectedRating);
+        s.classList.toggle('inactive', index >= selectedRating);
+      });
+    }
+
+    // Feedback submission
+    document.getElementById('feedback-submit').addEventListener('click', () => {
+      const comment = document.getElementById('feedback-comment').value;
+      
+      if (selectedRating === 0) {
+        alert('Please select a rating');
+        return;
+      }
+
+      if (!comment.trim()) {
+        alert('Please enter your feedback');
+        return;
+      }
+
+      // Show success message
+      const successMsg = document.getElementById('feedback-confirm');
+      successMsg.classList.add('show');
+
+      // Clear form
+      document.getElementById('feedback-comment').value = '';
+      selectedRating = 0;
+      updateStars();
+
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+        successMsg.classList.remove('show');
+      }, 3000);
+    });
+  </script>
+    
+  </main>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="profilepopup.js"></script>
+
+</body>
+
+</html>
