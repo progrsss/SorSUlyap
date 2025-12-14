@@ -29,8 +29,6 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
- 
 </head>
 
 <body>
@@ -49,12 +47,35 @@
                 <i class="fas fa-search"></i>
                 <input type="text" placeholder="Search">
             </div>
-            <button class="icon-button">
-                <i class="fas fa-bell"></i>
-            </button>
-            <button class="icon-button">
+            <div class="notification-container">
+                <button class="icon-button notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge" id="notification-badge" style="display: none;">0</span>
+                </button>
+                <div class="notification-dropdown" id="notification-dropdown" style="display: none;">
+                    <div class="notification-header">
+                        <h4>Notifications</h4>
+                        <button class="close-btn" id="close-notification">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="notification-section">
+                        <div class="section-label">Recent</div>
+                        <div class="notification-list" id="notification-list">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </div>
+                    <div class="notification-footer">
+                        <a href="notifications.html" class="see-all-link">See all Notifications</a>
+                        <button class="mark-all-read-btn" id="mark-all-read">Mark all as read</button>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="icon-button" id="logoutBtn">
                 <i class="fas fa-user"></i>
             </button>
+
+
         </div>
     </header>
 
@@ -63,6 +84,9 @@
 
      <!-- Main Content -->
     <main class="main-content">
+        <!-- Welcome Section Anchor -->
+        <div id="welcome"></div>
+
         <div class="announcement-card">
             <div class="admin-header">
                 <div class="admin-avatar">
@@ -205,6 +229,44 @@
   <script src="assets/js/main.js"></script>
 
   <script src="profilepopup.js"></script>
+
+  <script src="logout_popup.js"></script>
+
+  <!-- Test notification functionality -->
+  <script>
+    // Add a test notification button for demo
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const existingBtn = document.querySelector('#test-notification-btn');
+        if (!existingBtn) {
+          const testBtn = document.createElement('button');
+          testBtn.id = 'test-notification-btn';
+          testBtn.textContent = 'Add Test Notification';
+          Object.assign(testBtn.style, {
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            background: '#e8a5a5',
+            color: 'white',
+            border: 'none',
+            padding: '10px 15px',
+            borderRadius: '5px',
+            cursor: 'pointer',
+            zIndex: '10000',
+            fontSize: '12px'
+          });
+          document.body.appendChild(testBtn);
+
+          testBtn.addEventListener('click', function() {
+            // This will call the notification system functions if they exist
+            if (window.addTestNotification) {
+              window.addTestNotification();
+            }
+          });
+        }
+      }, 2000);
+    });
+  </script>
 
 
 </body>

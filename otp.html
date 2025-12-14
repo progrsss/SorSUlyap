@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification - SorSU</title>
+    <link rel="stylesheet" href="assets/css/otp.css">
+    </head>
+<body>
+    <div class="background-gradient"></div>
+    <div class="otp-container">
+        <div class="otp-card">
+            <div class="header">
+                <div class="icon-circle">
+                    <span class="lock-icon">🔒</span>
+                </div>
+                <h3>OTP Verification</h3>
+                <p>Enter email to send one time password</p>
+            </div>
+            <form class="email-form">
+                <label for="sorsu-email" class="form-label">SorSU Email</label>
+                <div class="input-group">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="sorsu-email" class="form-input" placeholder="yourname@sorsu.edu.ph" required>
+                </div>
+    <button type="submit" class="continue-button">Continue</button>
+</form>
+
+
+            <div class="notification-box">
+                <div class="notification-icon">⚠️</div>
+                <div class="notification-content">
+                    <h4>Check your email</h4>
+                    <p>We'll send a verification code to your SorSU email address. Please check your inbox and spam folder.</p>
+                </div>
+            </div>
+
+            <a href="login.html" class="back-to-login">← Back to login</a>
+        </div>
+    </div>
+</body>
+</html>

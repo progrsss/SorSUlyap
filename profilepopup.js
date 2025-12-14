@@ -53,7 +53,7 @@
         .popover-header { display: flex; align-items: flex-start; margin-bottom: 20px; position: relative; }
         .user-info { margin-left: 12px; }
         .user-name { font-weight: 700; font-size: 16px; color: #333; margin: 0; }
-        .user-badge { display: inline-block; background-color: #eee; color: #555; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-top: 4px; }
+        .user-badge { display: inline-block; background-color: #e58a8aff; color: #eee; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; margin-top: 4px; }
         .close-btn { position: absolute; top: 0; right: 0; cursor: pointer; font-size: 14px; color: #555; }
         .close-btn:hover { color: #d32f2f; }
 
@@ -74,25 +74,26 @@
         const popoverHTML = document.createElement('div');
         popoverHTML.classList.add('profile-widget');
         popoverHTML.innerHTML = `
-            <button class="profile-trigger" id="profileBtn">
-                <i class="fas fa-user"></i>
-            </button>
+    <button class="profile-trigger" id="profileBtn">
+        <i class="fas fa-user"></i>
+    </button>
 
-            <div class="profile-popover" id="profileMenu">
-                <div class="popover-header">
-                    <div class="avatar-circle"><i class="fas fa-user"></i></div>
-                    <div class="user-info">
-                        <h3 class="user-name">Student1</h3>
-                        <span class="user-badge">Student</span>
-                    </div>
-                    <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
-                </div>
-                <a href="#profile" class="profile-card-link">
-                    <i class="fa-solid fa-user card-icon"></i>
-                    <span class="card-title">My Profile</span>
-                    <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
-                </a>
+    <div class="profile-popover" id="profileMenu">
+        <div class="popover-header">
+            <div class="avatar-circle"><i class="fas fa-user"></i></div>
+            <div class="user-info">
+                <h3 class="user-name">Student1</h3>
+                <span class="user-badge">Student</span>
             </div>
+            <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
+        </div>
+        <a href="Profilepage.html" class="profile-card-link">
+            <i class="fa-solid fa-user card-icon"></i>
+            <span class="card-title">My Profile</span>
+            <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
+        </a>
+    </div>
+
         `;
         headerRight.appendChild(popoverHTML);
 

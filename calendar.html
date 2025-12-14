@@ -69,7 +69,9 @@
     <div class="container">
         <div class="calendar-section">
             <div class="calendar-header">
+                <button id="prevMonth" class="nav-button"><</button>
                 <span class="month-selector" id="monthSelector"></span>
+                <button id="nextMonth" class="nav-button">></button>
                 <span class="year-selector" id="yearSelector"></span>
             </div>
 
@@ -314,8 +316,34 @@
             closeYearOverlay();
         }
 
+        function prevMonth() {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            selectedDate = null;
+            renderCalendar();
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+        }
+
+        function nextMonth() {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            selectedDate = null;
+            renderCalendar();
+            document.getElementById('eventsContainer').innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">Select a date to view events</div>';
+        }
+
         document.getElementById('monthSelector').onclick = showMonthOverlay;
         document.getElementById('yearSelector').onclick = showYearOverlay;
+        document.getElementById('prevMonth').onclick = prevMonth;
+        document.getElementById('nextMonth').onclick = nextMonth;
 
         // Close overlays when clicking outside
         document.getElementById('monthOverlay').onclick = function(e) {
@@ -348,6 +376,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="profilepopup.js"></script>
 
 </body>
 

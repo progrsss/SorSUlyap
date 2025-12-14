@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1a1a1a; /* Dark background per screenshot edges */
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -30,7 +30,7 @@
             max-width: 700px;
             border-radius: 10px;
             padding: 40px;
-            position: relative; /* For the back button positioning */
+            position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -55,14 +55,13 @@
             margin-bottom: 20px;
         }
 
-        /* The Red Avatar */
         .avatar-box {
             width: 80px;
             height: 80px;
-            background-color: #d32f2f; /* Dark Red */
-            border-radius: 12px; /* Slightly rounded square */
+            background-color: #d32f2f;
+            border-radius: 12px;
             display: flex;
-            align-items: flex-end; /* Icon sits at bottom like a silhouette */
+            align-items: flex-end;
             justify-content: center;
             overflow: hidden;
             flex-shrink: 0;
@@ -71,10 +70,9 @@
         .avatar-box i {
             font-size: 60px;
             color: rgba(255, 255, 255, 0.9);
-            transform: translateY(10px); /* Push icon down slightly */
+            transform: translateY(10px);
         }
 
-        /* User Text Details */
         .user-info {
             display: flex;
             flex-direction: column;
@@ -96,7 +94,7 @@
         }
 
         .badge-student {
-            background-color: #e57373; /* Muted red/pink */
+            background-color: #e57373;
             color: #fff;
             font-size: 11px;
             font-weight: 600;
@@ -116,8 +114,9 @@
             color: #666;
         }
 
-        /* --- Change Profile Button --- */
-        .change-profile-btn {
+        /* --- Buttons --- */
+        .change-profile-btn,
+        .logout-btn {
             margin-top: 15px;
             background-color: #d32f2f;
             color: white;
@@ -132,7 +131,8 @@
             display: inline-block;
         }
 
-        .change-profile-btn:hover {
+        .change-profile-btn:hover,
+        .logout-btn:hover {
             background-color: #b71c1c;
         }
 
@@ -150,7 +150,7 @@
 
         .info-icon {
             font-size: 32px;
-            color: #e57373; /* Matches the icon in screenshot */
+            color: #e57373;
         }
 
         .section-title {
@@ -159,37 +159,34 @@
             color: #333;
         }
 
-        /* --- The Data Table/Grid --- */
         .info-grid {
             display: grid;
-            grid-template-columns: 150px 1fr; /* Label width | Value width */
+            grid-template-columns: 150px 1fr;
             row-gap: 20px;
             width: 100%;
-            max-width: 500px; /* Constrain width like screenshot */
-            margin-left: 50px; /* Indent to align with title text */
+            max-width: 500px;
+            margin-left: 50px;
         }
 
         .label {
             font-size: 16px;
             font-weight: 600;
-            color: #9e9e9e; /* Light Grey */
+            color: #9e9e9e;
         }
 
         .value {
             font-size: 16px;
             font-weight: 700;
-            color: #222; /* Darker Black */
+            color: #222;
             position: relative;
         }
 
-        /* The faint lines between rows */
         .row-separator {
-            grid-column: 1 / -1; /* Span full width */
+            grid-column: 1 / -1;
             border-bottom: 1px dashed #e0e0e0;
             margin-bottom: 5px;
         }
 
-        /* Responsive tweak for mobile */
         @media (max-width: 500px) {
             .info-grid {
                 grid-template-columns: 1fr;
@@ -200,16 +197,79 @@
             }
         }
 
+        /* --- Logout Popup --- */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-box {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 300px;
+            text-align: center;
+            animation: pop 0.25s ease;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0.7); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .popup-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .popup-text {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .popup-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cancel-btn, .yes-btn {
+            padding: 8px 18px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .cancel-btn {
+            background: #bdbdbd;
+        }
+
+        .yes-btn {
+            background: #d32f2f;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="profile-container">
-        
-        <div class="back-icon">
+        <!-- Back Button -->
+        <div class="back-icon" id="backBtn">
             <i class="fa-solid fa-arrow-left"></i>
         </div>
 
+        <!-- Header Section -->
         <div class="header-section">
             <div class="avatar-box">
                 <i class="fa-solid fa-user"></i>
@@ -224,8 +284,11 @@
             </div>
         </div>
 
-        <button class="change-profile-btn">Change Profile</button>
+        <!-- Buttons -->
+        <button class="change-profile-btn" id="changeProfileBtn">Change Profile</button>
+        <button class="logout-btn" id="logoutBtn">Log Out</button>
 
+        <!-- Personal Information Section -->
         <div class="details-section">
             <div class="section-header">
                 <i class="fa-regular fa-clipboard info-icon"></i>
@@ -233,7 +296,6 @@
             </div>
 
             <div class="info-grid">
-                
                 <div class="label">First Name</div>
                 <div class="value">Arianne</div>
                 <div class="row-separator"></div>
@@ -244,10 +306,50 @@
 
                 <div class="label">Address</div>
                 <div class="value">n/a</div>
-                </div>
+                <div class="row-separator"></div>
+            </div>
         </div>
-
     </div>
+
+    <!-- LOGOUT POPUP -->
+    <div class="popup-overlay" id="logoutPopup">
+        <div class="popup-box">
+            <div class="popup-title">Log Out?</div>
+            <div class="popup-text">Are you sure you want to log out?</div>
+
+            <div class="popup-buttons">
+                <button class="cancel-btn" id="cancelLogout">Cancel</button>
+                <button class="yes-btn" id="confirmLogout">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Back button
+        document.getElementById('backBtn').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+
+        // Change profile
+        document.getElementById('changeProfileBtn').addEventListener('click', () => {
+            alert('Redirecting to change profile page...');
+        });
+
+        // Logout popup open
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            document.getElementById("logoutPopup").style.display = "flex";
+        });
+
+        // Cancel logout
+        document.getElementById("cancelLogout").addEventListener("click", function () {
+            document.getElementById("logoutPopup").style.display = "none";
+        });
+
+        // Confirm logout
+        document.getElementById("confirmLogout").addEventListener("click", function () {
+            window.location.href = "login.html";
+        });
+    </script>
 
 </body>
 </html>

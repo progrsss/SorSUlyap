@@ -6,103 +6,164 @@
     <title>SorSUlyap - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="assets/css/login.css" rel="stylesheet">
+
     <style>
-        /* Add any page-specific styles here if needed */
+        /* ==================== BIG BUBBLE BACKGROUND ==================== */
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+            background: #eee;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -200px;
+            background: #e58a8a;
+            border-radius: 50%;
+            animation: rise 18s infinite ease-in;
+            filter: blur(3px);
+        }
+
+        .bubble:nth-child(1) { left: 5%;  width: 120px; height: 120px; animation-duration: 14s; }
+        .bubble:nth-child(2) { left: 18%; width: 200px; height: 200px; animation-duration: 18s; }
+        .bubble:nth-child(3) { left: 32%; width: 150px; height: 150px; animation-duration: 16s; }
+        .bubble:nth-child(4) { left: 50%; width: 220px; height: 220px; animation-duration: 22s; }
+        .bubble:nth-child(5) { left: 66%; width: 130px; height: 130px; animation-duration: 17s; }
+        .bubble:nth-child(6) { left: 75%; width: 180px; height: 180px; animation-duration: 20s; }
+        .bubble:nth-child(7) { left: 88%; width: 160px; height: 160px; animation-duration: 19s; }
+        .bubble:nth-child(8) { left: 28%; width: 240px; height: 240px; animation-duration: 25s; }
+        .bubble:nth-child(9) { left: 55%; width: 110px; height: 110px; animation-duration: 12s; }
+        .bubble:nth-child(10) { left: 92%; width: 180px; height: 180px; animation-duration: 21s; }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.15;
+            }
+            40% {
+                opacity: 0.30;
+            }
+            100% {
+                transform: translateY(-1400px) scale(1.4);
+                opacity: 0;
+            }
+        }
+        /* ============================================================ */
     </style>
 </head>
+
 <body>
+
+    <!-- BIG BUBBLE BACKGROUND -->
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+
     <div class="cont">
-    <div class="login-container">
-        <!-- Left Side - Branding -->
-        <div class="login-left">
-            <div class="logo-container">
-                <div class="logo-circle">
-                    <img src="assets/img/SorSUlyap_logo.png" alt="SorSUlyap Logo">
-                </div>
-            </div>
-            <h1 class="brand-title">SorSUlyap</h1>
-            <p class="brand-tagline">Connecting Campus. Simplifying Information</p>
-        </div>
+        <div class="login-container">
 
-        <!-- Right Side - Login Form -->
-        <div class="login-right">
-            <h2 class="login-title">LOG IN</h2>
-
-            <form>
-                <div class="form-group">
-                    <label class="form-label">SorSu Email</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input
-                            type="email"
-                            class="form-input"
-                            placeholder="yourname@sorsu.edu.ph"
-                            required
-                        >
+            <!-- Left Side - Branding -->
+            <div class="login-left">
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <img src="assets/img/SorSUlyap_logo.png" alt="SorSUlyap Logo">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="form-label">Password</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input
-                            type="password"
-                            class="form-input"
-                            id="password"
-                            placeholder="Enter password"
-                            required
-                        >
-                        <button type="button" class="password-toggle" onclick="togglePassword()">
-                            <i class="fas fa-eye" id="toggleIcon"></i>
-                        </button>
+                <h1 class="brand-title">SorSUlyap</h1>
+                <p class="brand-tagline">Connecting Campus. Simplifying Information</p>
+            </div>
+
+            <!-- Right Side - Login Form -->
+            <div class="login-right">
+                <h2 class="login-title">LOG IN</h2>
+
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">SorSu Email</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" class="form-input" placeholder="yourname@sorsu.edu.ph" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" class="form-input" id="password" placeholder="Enter password" required>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">Login</button>
+
+                    <div class="login-footer">
+                        <a href="signup.html">Create an account</a>
+                        <a href="otp.html">Forgot Password?</a>
+                    </div>
+                </form>
+
+                <!-- OTP Modal -->
+                <div id="otpModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeOtpModal()">&times;</span>
+                        <h2>Verify Login</h2>
+                        <p>Enter the OTP sent to your email</p>
+                        <input type="text" id="otp-input" placeholder="Enter OTP" maxlength="6">
+                        <button type="button" id="verify-btn">Verify</button>
+                        <button type="button" onclick="resendOtp()">Resend OTP</button>
                     </div>
                 </div>
 
-                <button type="submit" class="login-btn">Login</button>
-
-                <div class="login-footer">
-                    <a href="signup.html">Create an account</a>
-                    <a href="#">Forgot Password?</a>
+                <!-- Forgot Password Modal -->
+                <div id="forgotModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeForgotModal()">&times;</span>
+                        <h2>Forgot Password</h2>
+                        <p>Enter your email to reset password</p>
+                        <input type="email" id="forgot-email" placeholder="yourname@sorsu.edu.ph">
+                        <button type="button" id="reset-btn">Send Reset OTP</button>
+                    </div>
                 </div>
-            </form>
 
-            <!-- OTP Modal -->
-            <div id="otpModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="closeOtpModal()">&times;</span>
-                    <h2>Verify Login</h2>
-                    <p>Enter the OTP sent to your email</p>
-                    <input type="text" id="otp-input" placeholder="Enter OTP" maxlength="6">
-                    <button type="button" id="verify-btn">Verify</button>
-                    <button type="button" onclick="resendOtp()">Resend OTP</button>
+                <!-- Reset OTP Modal -->
+                <div id="resetOtpModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeResetOtpModal()">&times;</span>
+                        <h2>Reset Password</h2>
+                        <p>Enter the OTP sent to your email and new password</p>
+                        <input type="text" id="reset-otp" placeholder="Enter OTP" maxlength="6">
+                        <input type="password" id="new-password" placeholder="New Password">
+                        <button type="button" id="reset-verify-btn">Reset Password</button>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Forgot Password Modal -->
-            <div id="forgotModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="closeForgotModal()">&times;</span>
-                    <h2>Forgot Password</h2>
-                    <p>Enter your email to reset password</p>
-                    <input type="email" id="forgot-email" placeholder="yourname@sorsu.edu.ph">
-                    <button type="button" id="reset-btn">Send Reset OTP</button>
-                </div>
-            </div>
-
-            <!-- Reset OTP Modal -->
-            <div id="resetOtpModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" onclick="closeResetOtpModal()">&times;</span>
-                    <h2>Reset Password</h2>
-                    <p>Enter the OTP sent to your email and new password</p>
-                    <input type="text" id="reset-otp" placeholder="Enter OTP" maxlength="6">
-                    <input type="password" id="new-password" placeholder="New Password">
-                    <button type="button" id="reset-verify-btn">Reset Password</button>
-                </div>
             </div>
         </div>
     </div>
+
+    <!-- Include config and API service -->
+    <script src="config.js"></script>
+    <script src="api.js"></script>
+
     <script src="assets/js/login.js"></script>
 </body>
 </html>
