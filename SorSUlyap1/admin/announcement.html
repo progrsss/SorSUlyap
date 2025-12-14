@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Announcement</title>
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!--Header Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header d-flex align-items-center sticky-top">
+        <div class="logo">Admin Panel</div>
+        <nav class="nav">
+            <a href="index.html">Dashboard</a>
+            <a href="announcement.html" class="active">Announcement</a>
+            <a href="user_management.html">User Management</a>
+            <a href="event_calendar.html">Event Calendar</a>
+            <a href="notification.html">Notification</a>
+            <a href="system_settings.html">System Settings</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Announcement</h1>
+            <p>Post new content and delete existing ones.</p>
+            
+            <section class="new-post-form">
+                <h2>Create New Post</h2>
+                <form id="postForm">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Content</label>
+                        <textarea id="content" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachments">Attachments</label>
+                        <input type="file" id="attachments" multiple>
+                    </div>
+                    <button type="submit" class="btn btn-post">Post</button>
+                </form>
+            </section>
+            
+            <section class="existing-content" style="background: #fff; padding: 1.5em; border-radius: 8px; margin-bottom: 2em; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+                <h2>Existing Content</h2>
+                <div class="content-item">
+                    <h3>Welcome to SorSUlyap</h3>
+                    <p>Date: 2023-11-15</p>
+                    <p>Admin User</p>
+                    <p>This is the welcome post content...</p>
+                    <p><strong>Uploads:</strong> welcome_banner.jpg, intro_video.mp4</p>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+                <div class="content-item">
+                    <h3>New Course: Web Development</h3>
+                    <p>Date: 2023-11-10</p>
+                    <p>Admin User</p>
+                    <p>Learn the basics of web development...</p>
+                    <p><strong>Uploads:</strong> course_syllabus.pdf, demo_material.zip</p>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+                <div class="content-item">
+                    <h3>Open Day Event</h3>
+                    <p>Date: 2023-11-08</p>
+                    <p>Admin User</p>
+                    <p>Join us for the open day...</p>
+                    <p><strong>Uploads:</strong> event_schedule.pdf, event_poster.png</p>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

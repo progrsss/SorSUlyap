@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - System Settings</title>
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!--Header Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <style>
+        .container { max-width: 1200px; margin: 0 auto; padding: 1em; }
+        .settings-section { background: #fff; border: 1px solid #ddd; padding: 1.5em; margin-bottom: 1em; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 0.5em; }
+        .form-group label { display: block; margin-bottom: 0.25em; }
+        .form-group input { width: 100%; padding: 0.5em; border: 1px solid #ddd; border-radius: 4px; }
+        .btn { padding: 0.5em 1em; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-save { background: #28a745; color: white; }
+    </style>
+</head>
+<body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="logo">Admin Panel</div>
+        <nav class="nav">
+            <a href="index.html">Dashboard</a>
+            <a href="announcement.html">Announcement</a>
+            <a href="user_management.html">User Management</a>
+            <a href="event_calendar.html">Event Calendar</a>
+            <a href="notification.html">Notification</a>
+            <a href="system_settings.html" class="active">System Settings</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h1>System Settings</h1>
+            <p>Manage general system configurations.</p>
+            
+            <section class="settings-section">
+                <h2>Site Settings</h2>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="siteName">Site Name</label>
+                        <input type="text" id="siteName" value="SorSUlyap">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescription">Site Description</label>
+                        <input type="text" id="siteDescription" value="Educational platform">
+                    </div>
+                    <h3>Approval Settings</h3>
+                    <div class="form-group">
+                        <label><input type="checkbox" checked> Require admin approval for new users</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" checked> Auto-assign "Student" role</label>
+                    </div>
+                    <button type="submit" class="btn btn-save">Save Settings</button>
+                </form>
+            </section>
+            
+            <section class="settings-section">
+                <h2>Content Settings</h2>
+                <form>
+                    <div class="form-group">
+                        <label><input type="checkbox" checked> Enable blog posts</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" checked> Enable course listings</label>
+                    </div>
+                    <div class="form-group">
+                        <label><input type="checkbox" checked> Enable event announcements</label>
+                    </div>
+                    <button type="submit" class="btn btn-save">Save Content Settings</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.getElementById('settingsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Settings saved successfully!');
+            // In real app, send to server
+        });
+    </script>
+</body>
+</html>

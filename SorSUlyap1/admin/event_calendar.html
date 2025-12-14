@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Event Calendar</title>
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!--Header Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header d-flex align-items-center sticky-top">
+        <div class="logo">Admin Panel</div>
+        <nav class="nav">
+            <a href="index.html">Dashboard</a>
+            <a href="announcement.html">Announcement</a>
+            <a href="user_management.html">User Management</a>
+            <a href="event_calendar.html" class="active">Event Calendar</a>
+            <a href="notification.html">Notification</a>
+            <a href="system_settings.html">System Settings</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h1>Event Calendar Management</h1>
+            <p>Manage and schedule events.</p>
+            
+            <section class="new-event-form">
+                <h2>Add New Event</h2>
+                <form id="eventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Event Title</label>
+                        <input type="text" id="eventTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDate">Date</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventLocation">Location</label>
+                        <input type="text" id="eventLocation" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Description</label>
+                        <textarea id="eventDescription" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-add">Add Event</button>
+                </form>
+            </section>
+            
+            <section class="events-list" style="background: #fff; padding: 1.5em; border-radius: 8px; margin-bottom: 2em; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+                <h2>Scheduled Events</h2>
+                <div class="event-item">
+                    <h3>Open Day</h3>
+                    <p>Date: 2023-12-15 | Time: 10:00 AM</p>
+                    <p>Annual open day event for prospective students...</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+                <div class="event-item">
+                    <h3>Graduation Ceremony</h3>
+                    <p>Date: 2023-12-20 | Time: 2:00 PM</p>
+                    <p>Celebration for graduating students...</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+                <div class="event-item">
+                    <h3>Workshop: Career Development</h3>
+                    <p>Date: 2023-12-25 | Time: 9:00 AM</p>
+                    <p>Interactive workshop on career planning...</p>
+                    <button class="btn btn-edit">Edit</button>
+                    <button class="btn btn-delete">Delete</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

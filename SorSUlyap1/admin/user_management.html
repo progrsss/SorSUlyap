@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Management</title>
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!--Header Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+    <link href="admin.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="logo">Admin Panel</div>
+        <nav class="nav">
+            <a href="index.html">Dashboard</a>
+            <a href="announcement.html">Announcement</a>
+            <a href="user_management.html" class="active">User Management</a>
+            <a href="event_calendar.html">Event Calendar</a>
+            <a href="notification.html">Notification</a>
+            <a href="system_settings.html">System Settings</a>
+        </nav>
+        <div class="header-right">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search">
+            </div>
+            <button class="icon-button">
+                <i class="fas fa-user"></i>
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <h1>User Role Approvals</h1>
+            <p>Review and approve user signups, assign roles.</p>
+            <div style="background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+                <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Signup Date</th>
+                        <th>Requested Role</th>
+                        <th>Assign Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john.doe@sorsu.edu.ph</td>
+                        <td>2023-12-01</td>
+                        <td>Student</td>
+                        <td>
+                            <select class="role-select">
+                                <option>Select Role</option>
+                                <option>Student</option>
+                                <option>Instructor</option>
+                                <option>Admin</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-approve">Approve</button>
+                            <button class="btn btn-deny">Deny</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane.smith@sorsu.edu.ph.com</td>
+                        <td>2023-12-02</td>
+                        <td>Instructor</td>
+                        <td>
+                            <select class="role-select">
+                                <option>Select Role</option>
+                                <option>Student</option>
+                                <option>Instructor</option>
+                                <option>Admin</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-approve">Approve</button>
+                            <button class="btn btn-deny">Deny</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bob Wilson</td>
+                        <td>bob.wilson@sorsu.edu.ph</td>
+                        <td>2023-12-03</td>
+                        <td>Admin</td>
+                        <td>
+                            <select class="role-select">
+                                <option>Select Role</option>
+                                <option>Student</option>
+                                <option>Instructor</option>
+                                <option>Admin</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn btn-approve">Approve</button>
+                            <button class="btn btn-deny">Deny</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="../assets/js/main.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
