@@ -70,11 +70,14 @@
         const oldProfileBtn = headerRight.querySelector('.icon-button:last-child');
         if (oldProfileBtn) oldProfileBtn.remove();
 
-        // Get current user
-        const user = JSON.parse(localStorage.getItem(CONFIG.USER_KEY) || '{}');
-        const userName = user.name || 'User';
+        // Get user data from localStorage
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        const userName = user.name || 'Student';
         const userRole = user.role || 'Student';
-        const profileHref = userRole === 'Faculty' ? 'faculty.html' : 'Profilepage.html';
+        const roleColor = userRole.toLowerCase() === 'admin' ? '#d32f2f' : '#e58a8aff';
+
+        // Determine target page based on role
+        const targetPage = userRole.toLowerCase() === 'faculty' ? 'faculty.html' : 'Profilepage.html';
 
         // 3️⃣ Inject new profile widget button with popover
         const popoverHTML = document.createElement('div');
@@ -89,14 +92,14 @@
             <div class="avatar-circle"><i class="fas fa-user"></i></div>
             <div class="user-info">
                 <h3 class="user-name">${userName}</h3>
-                <span class="user-badge">${userRole}</span>
+                <span class="user-badge" style="background-color: ${roleColor};">${userRole}</span>
             </div>
             <i class="fa-solid fa-arrow-left close-btn" id="closeBtn"></i>
         </div>
-        <a href="${profileHref}" class="profile-card-link">
+        <a href="${targetPage}" class="profile-card-link">
             <i class="fa-solid fa-user card-icon"></i>
-            <span class="card-title">My Profile</span>
-            <span class="card-subtitle">View and manage your personal info, account settings, and preferences</span>
+            <span class="card-title">My Dashboard</span>
+            <span class="card-subtitle">Go to your main dashboard page</span>
         </a>
     </div>
 
